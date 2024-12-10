@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inventario de Productos</h1>
+
+
+        <!-- Inicio de Sesión -->
+        <section id="login">
+            <h2>Iniciar Sesión</h2>
+            <form id="formLogin">
+                <label for="login_nombre_usuario">Nombre de Usuario</label>
+                <input type="text" id="login_nombre_usuario" name="nombre_usuario" required>
+                
+                <label for="login_contraseña">Contraseña</label>
+                <input type="password" id="login_contraseña" name="contraseña" required>
+                
+                <button type="submit">Iniciar Sesión</button>
+                
+                <label>¿Aun no te has registrado?<a href="registro.html">Registrate</a></label>
+        
+            </form>
+            <div id="loginMensaje"></div>
+        </section>
+
+    </div>
+
+    <script>
+        // Registro de Usuario
+        document.getElementById('formRegistro').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = {
+                nombre_usuario: e.target.nombre_usuario.value,
+                correo: e.target.correo.value,
+                contraseña: e.target.contraseña.value
+            };
+            const response = await fetch('/registro', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const mensaje = document.getElementById('registroMensaje');
+            mensaje.textContent = response.ok ? 'Registro exitoso.' : 'Error en el registro.';
+        });
+
+        // Inicio de Sesión
+        document.getElementById('formLogin').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = {
+                nombre_usuario: e.target.nombre_usuario.value,
+                contraseña: e.target.contraseña.value
+            };
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const mensaje = document.getElementById('loginMensaje');
+            mensaje.textContent = response.ok ? 'Inicio de sesión exitoso.' : 'Error en el inicio de sesión.';
+        });
+
+        
+
+       
+        
+    </script>
+</body>
+</html>

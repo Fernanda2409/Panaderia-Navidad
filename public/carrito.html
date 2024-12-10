@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carrito - Panadería Esperanza</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Carrito</h1>
+        <nav>
+            <ul>
+                <li><a href="cliente.html">Inicio</a></li>
+                <li><a href="#">Catálogo</a></li>
+                <li><a href="carrito.html">Mi Carrito</a></li>
+                <li><a href="#">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="carrito-container">
+            <h2>Productos en tu carrito</h2>
+            <div id="carrito-items"></div>
+            <button id="comprar-button">Finalizar Compra</button>
+        </div>
+        <div id="ticket-container" style="display:none;">
+            <h2>Ticket de Compra</h2>
+            <div id="ticket-details"></div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Panadería Esperanza. Todos los derechos reservados.</p>
+    </footer>
+    <script src="scriptcarrito.js"></script>
+</body>
+</html>

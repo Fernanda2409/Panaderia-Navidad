@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador - CRUD de Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="inicio">
+        <h1 class="h1-inicio">PANADERIA LA DESESPERANZA</h1>
+    </nav>
+    <div class="div-img">
+        <table>
+            <tr>
+                <td class="h2-img">
+                    <h2>"La Desesperanza, donde cada bocado es una esperanza renovada."</h2>
+                </td>
+                <td>
+                    <img src="https://img.freepik.com/fotos-premium/variedad-colorida-rollos-pan-panes_1092689-53888.jpg">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h1>Administrador - Gestión de Productos</h1>
+
+    <!-- Formulario para agregar o actualizar producto -->
+    <form id="formProducto">
+        <input type="hidden" id="producto_id">
+        <label>Nombre:</label>
+        <input type="text" id="nombre" required>
+        <label>Precio:</label>
+        <input type="number" id="precio" required>
+        <label>URL de la Imagen:</label>
+        <input type="text" id="imagen_url" required>
+        <button type="submit">Guardar Producto</button>
+    </form>
+
+    <!-- Lista de productos -->
+    <h2>Productos</h2>
+    <div id="productos"></div>
+
+    <script>
+        // Cargar productos
+        async function cargarProductos() {
+            const response = await fetch('/productos');
+            const productos = await response.json();
+            const contenedor = document.getElementById('productos');
+            contenedor.innerHTML = productos.map(producto => `
+                <div>
+                    <img src="${producto.imagen_url}" alt="${producto.nombre}" width="100">
+                    <p>${producto.nombre} - $${producto.precio}</p>
+                    <button onclick="eliminarProducto(${producto.id})">Eliminar</button>
+                    <button onclick="editarProducto(${producto.id}, '${producto.nombre}', ${producto.precio}, '${producto.imagen_url}')">Editar</button>
+                </div>
+            `).join('');
+        }
+
+        // Guardar producto
+        document.getElementById('formProducto').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('producto_id').value;
+            const nombre = document.getElementById('nombre').value;
+            const precio = document.getElementById('precio').value;
+            const imagen_url = document.getElementById('imagen_url').value;
+
+            const metodo = id ? 'PUT' : 'POST';
+            const url = id ? `/productos/${id}` : '/productos';
+            await fetch(url, {
+                method: metodo,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, precio, imagen_url })
+            });
+
+            cargarProductos();
+        });
+
+        // Editar producto
+        function editarProducto(id, nombre, precio, imagen_url) {
+            document.getElementById('producto_id').value = id;
+            document.getElementById('nombre').value = nombre;
+            document.getElementById('precio').value = precio;
+            document.getElementById('imagen_url').value = imagen_url;
+        }
+
+        // Eliminar producto
+        async function eliminarProducto(id) {
+            await fetch(`/productos/${id}`, { method: 'DELETE' });
+            cargarProductos();
+        }
+
+        // Cargar al inicio
+        cargarProductos();
+    </script>
+</body>
+</html>

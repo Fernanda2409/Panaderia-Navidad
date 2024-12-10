@@ -1,0 +1,204 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fef6e4; /* Fondo crema cálido */
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    padding: 20px;
+}
+
+/* Estilo del encabezado */
+nav.inicio {
+    background-color: #7a1f3d; /* Rojo oscuro */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav.inicio .h1-inicio {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Imagen destacada */
+.div-img table {
+    width: 100%;
+    margin-top: 20px;
+    border-spacing: 10px;
+}
+
+.div-img img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.div-img .h2-img h2 {
+    color: #7a1f3d;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-right: 20px;
+}
+
+/* Títulos */
+h1, h2 {
+    color: #7a1f3d;
+    text-align: center;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #7a1f3d;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fdf6e4;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #7a1f3d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #ff4747; /* Rojo brillante */
+}
+
+/* Lista de productos */
+#productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#productos div {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+}
+
+#productos img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#productos p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#productos button {
+    padding: 8px 12px;
+    margin: 5px;
+    background-color: #ffd700; /* Dorado */
+    color: #7a1f3d;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#productos button:hover {
+    background-color: #ffcc00; /* Dorado más brillante */
+}
+
+/* Pie de página */
+footer {
+    background-color: #7a1f3d;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Decoraciones navideñas */
+body::before {
+    content: '🎄';
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 3rem;
+    animation: bounce 3s infinite;
+}
+
+body::after {
+    content: '❄️';
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 3rem;
+    animation: fade 5s infinite;
+}
+
+/* Animaciones */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
